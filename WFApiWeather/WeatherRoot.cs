@@ -1,8 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WFApiWeather
 {
@@ -44,6 +41,13 @@ namespace WFApiWeather
 
     public class Rain
     {
+        [JsonProperty("3h")]
+        public double t3h { get; set; }
+    }
+
+    public class Snow
+    {
+        [JsonProperty("3h")]
         public double t3h { get; set; }
     }
 
@@ -57,6 +61,7 @@ namespace WFApiWeather
         public Sys sys { get; set; }
         public string dt_txt { get; set; }
         public Rain rain { get; set; }
+        public Snow snow { get; set; }
     }
 
     public class Coord

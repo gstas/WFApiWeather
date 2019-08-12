@@ -40,11 +40,16 @@
             this.Clouds = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Weather = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Wind = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rain = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
             // dgv
             // 
+            this.dgv.AllowUserToAddRows = false;
+            this.dgv.AllowUserToDeleteRows = false;
+            this.dgv.AllowUserToOrderColumns = true;
+            this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Date,
@@ -54,15 +59,17 @@
             this.Humidity,
             this.Clouds,
             this.Weather,
-            this.Wind});
+            this.Wind,
+            this.Rain});
             this.dgv.Location = new System.Drawing.Point(12, 12);
             this.dgv.Name = "dgv";
-            this.dgv.Size = new System.Drawing.Size(954, 389);
+            this.dgv.ReadOnly = true;
+            this.dgv.Size = new System.Drawing.Size(1092, 389);
             this.dgv.TabIndex = 0;
             // 
             // btn_update
             // 
-            this.btn_update.Location = new System.Drawing.Point(876, 407);
+            this.btn_update.Location = new System.Drawing.Point(1014, 413);
             this.btn_update.Name = "btn_update";
             this.btn_update.Size = new System.Drawing.Size(90, 31);
             this.btn_update.TabIndex = 1;
@@ -73,7 +80,7 @@
             // lbl_city
             // 
             this.lbl_city.AutoSize = true;
-            this.lbl_city.Location = new System.Drawing.Point(519, 416);
+            this.lbl_city.Location = new System.Drawing.Point(664, 422);
             this.lbl_city.Name = "lbl_city";
             this.lbl_city.Size = new System.Drawing.Size(105, 13);
             this.lbl_city.TabIndex = 2;
@@ -81,7 +88,7 @@
             // 
             // textBox_city
             // 
-            this.textBox_city.Location = new System.Drawing.Point(640, 413);
+            this.textBox_city.Location = new System.Drawing.Point(785, 419);
             this.textBox_city.Name = "textBox_city";
             this.textBox_city.ReadOnly = true;
             this.textBox_city.Size = new System.Drawing.Size(213, 20);
@@ -91,48 +98,61 @@
             // 
             this.Date.HeaderText = "Date";
             this.Date.Name = "Date";
-            this.Date.Width = 150;
+            this.Date.ReadOnly = true;
             // 
             // Tmin
             // 
             this.Tmin.HeaderText = "Tmin, °C";
             this.Tmin.Name = "Tmin";
+            this.Tmin.ReadOnly = true;
             // 
             // Tmax
             // 
             this.Tmax.HeaderText = "Tmax,°C";
             this.Tmax.Name = "Tmax";
+            this.Tmax.ReadOnly = true;
             // 
             // Pressure
             // 
             this.Pressure.HeaderText = "Pressure, kPa";
             this.Pressure.Name = "Pressure";
+            this.Pressure.ReadOnly = true;
             // 
             // Humidity
             // 
             this.Humidity.HeaderText = "Humidity, %";
             this.Humidity.Name = "Humidity";
+            this.Humidity.ReadOnly = true;
             // 
             // Clouds
             // 
             this.Clouds.HeaderText = "Clouds, %";
             this.Clouds.Name = "Clouds";
+            this.Clouds.ReadOnly = true;
             // 
             // Weather
             // 
             this.Weather.HeaderText = "Weather";
             this.Weather.Name = "Weather";
+            this.Weather.ReadOnly = true;
             // 
             // Wind
             // 
             this.Wind.HeaderText = "Wind, m/sec";
             this.Wind.Name = "Wind";
+            this.Wind.ReadOnly = true;
+            // 
+            // Rain
+            // 
+            this.Rain.HeaderText = "Rain/Snow, mm";
+            this.Rain.Name = "Rain";
+            this.Rain.ReadOnly = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(978, 450);
+            this.ClientSize = new System.Drawing.Size(1116, 450);
             this.Controls.Add(this.textBox_city);
             this.Controls.Add(this.lbl_city);
             this.Controls.Add(this.btn_update);
@@ -159,6 +179,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Clouds;
         private System.Windows.Forms.DataGridViewTextBoxColumn Weather;
         private System.Windows.Forms.DataGridViewTextBoxColumn Wind;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Rain;
     }
 }
 

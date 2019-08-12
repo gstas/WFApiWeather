@@ -46,6 +46,10 @@ namespace WFApiWeather
 
                     foreach (List list in currentWeather.list)
                     {
+                        string precipitation = "";
+                        precipitation = list.rain != null ? list.rain.t3h.ToString() : "";
+                        precipitation += list.snow != null ? (precipitation != "" ? "; " : "") + list.snow.t3h.ToString() : "";
+
                         obj = new object[] {
                             list.dt_txt,
                             list.main.temp_min,
@@ -54,8 +58,10 @@ namespace WFApiWeather
                             list.main.humidity,
                             list.clouds.all,
                             list.weather[0].main,
-                            "" + Math.Round(list.wind.deg) + "°; " + Math.Round(list.wind.speed)
+                            "" + GetWindDirection(list.wind.deg) + ", " + Math.Round(list.wind.speed),
+                            precipitation
                         };
+
                         dgv.Rows.Add(obj);
                         obj = null;
                     }
@@ -68,7 +74,7 @@ namespace WFApiWeather
             }
         }
 
-        private static void GetWeatherData()
+        private void GetWeatherData()
         {
 
             lastError = "";
@@ -90,6 +96,27 @@ namespace WFApiWeather
             }
         }
 
+        private string GetWindDirection(double degrees)
+        {
+            if (degrees > 337.5 && degrees <= 22.5)
+                return "N";
+            else if (degrees > 22.5 && degrees <= 67.5)
+                return "NE";
+            else if (degrees > 67.5 && degrees <= 112.5)
+                return "E";
+            else if (degrees > 112.5 && degrees <= 157.5)
+                return "SE";
+            else if (degrees > 157.5 && degrees <= 202.5)
+                return "S";
+            else if (degrees > 202.5 && degrees <= 247.5)
+                return "SW";
+            else if (degrees > 247.5 && degrees <= 292.5)
+                return "W";
+            else if (degrees > 292.5 && degrees <= 337.5)
+                return "NW";
+            else
+                return "";
+        }
 
     }
 }
